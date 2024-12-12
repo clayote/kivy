@@ -292,6 +292,8 @@ cdef class StencilUse(Instruction):
             self._op = GL_EQUAL
 
     cdef int apply(self) except -1:
+        if _stencil_state.get("op", None) == "use":
+            return 0
         _stencil_state["gl_stencil_func"] = self._op
         _stencil_state["op"] = "use"
         stencil_apply_state(_stencil_state, False)
@@ -323,6 +325,8 @@ cdef class StencilUnUse(Instruction):
     '''Use current stencil buffer to unset the mask.
     '''
     cdef int apply(self) except -1:
+        if _stencil_state.get("op", None) == "unuse":
+            return 0
         _stencil_state["op"] = "unuse"
         stencil_apply_state(_stencil_state, False)
         return 0
