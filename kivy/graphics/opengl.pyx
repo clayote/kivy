@@ -18,6 +18,7 @@ include "../include/config.pxi"
 include "common.pxi"
 
 cimport kivy.graphics.cgl as cgldef
+from Cython import long
 from kivy.graphics.cgl cimport (cgl, GLvoid, GLfloat, GLuint, GLint, GLchar,
     GLubyte, cgl_init, GLboolean, GLenum, GLsizei, GLclampf, GLbitfield,
     GLintptr, GLsizeiptr)
@@ -34,7 +35,7 @@ cdef GLuint *_genBegin(int n):
 
 cdef list _genEnd(int n, GLuint *data):
     cdef list out = []
-    for x in xrange(n):
+    for x in range(n):
         out.append(data[x])
     free(data)
     return out

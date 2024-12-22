@@ -8,6 +8,7 @@ It effectively enhances the
 `weakref.proxy <https://docs.python.org/2/library/weakref.html#weakref.proxy>`_
 by adding comparison support.
 """
+from Cython import long
 
 include "include/config.pxi"
 import weakref

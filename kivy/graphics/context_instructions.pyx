@@ -21,6 +21,8 @@ __all__ = ('Color', 'BindTexture', 'PushMatrix', 'PopMatrix',
            'Rotate', 'Scale', 'Translate', 'MatrixInstruction',
            'gl_init_resources')
 
+from Cython import long
+
 from kivy.graphics.instructions cimport *
 from kivy.graphics.transformation cimport *
 

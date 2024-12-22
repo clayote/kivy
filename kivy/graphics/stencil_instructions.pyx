@@ -297,6 +297,7 @@ cdef class StencilUse(Instruction):
         _stencil_state["gl_stencil_func"] = self._op
         _stencil_state["op"] = "use"
         stencil_apply_state(_stencil_state, False)
+        print("stencil used", repr(_stencil_state))
         return 0
 
     @property
@@ -329,4 +330,5 @@ cdef class StencilUnUse(Instruction):
             return 0
         _stencil_state["op"] = "unuse"
         stencil_apply_state(_stencil_state, False)
+        print("stencil lifted", repr(_stencil_state))
         return 0
